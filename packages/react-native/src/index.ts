@@ -92,6 +92,11 @@ export type {
 
 export { defaultConfig } from './config.ts';
 export { NativeWavelengthClient } from './client.ts';
+
+// The raw TurboModule, for hosts that cannot use NativeWavelengthClient:
+// it assumes the React Native JS thread, so a Bare worklet (which runs the
+// daemon on its own runtime) has to drive the module directly.
+export { default as NativeWavelength } from './NativeWavelength.ts';
 export type {
   NativeActivityEvent,
   SubscribeToNativeEvents,
