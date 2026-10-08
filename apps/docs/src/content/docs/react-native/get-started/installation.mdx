@@ -38,16 +38,17 @@ Expo apps need a **development build**, not Expo Go: the native wallet runtime i
 
 ## Native runtime binaries
 
-<Callout type="note" title="Native binaries are not bundled">
-The native wallet runtime binaries (`Wavewalletdk.aar`, `Wavewalletdk.xcframework`)
-are not included in the npm package. Stage them into the installed package before
-running `pod install` or a Gradle build, using the steps below.
+<Callout type="note" title="The iOS binary is not bundled">
+The Android runtime binary (`Wavewalletdk.aar`) ships inside the npm package, so
+Android needs no extra step. The iOS one (`Wavewalletdk.xcframework`) is not
+included: stage it into the installed package before running `pod install`,
+using the steps below.
 </Callout>
 
-Download `Wavewalletdk.aar` and `Wavewalletdk.xcframework.tar.gz` from the
+Download `Wavewalletdk.xcframework.tar.gz` from the
 [wavelength release](https://github.com/lightninglabs/wavelength/releases) tagged
 with the `RUNTIME_MANIFEST_VERSION` that `@lightninglabs/wavelength-core`
-exports, then stage them from the installed package directory:
+exports, then stage it from the installed package directory:
 
 The release ships the raw gomobile output, whose headers use the Objective-C
 modules syntax. clang rejects that while compiling this package's Objective-C++
@@ -72,10 +73,7 @@ find "$TMP/Wavewalletdk.xcframework" -name '*.h.orig' -delete
 # a directory behind, so tar's exit status is the test, not the framework's
 # existence. The podspec check confirms the cd above landed, so a paste from
 # the wrong directory cannot delete something else's ios/.
-if [ "$extracted" -eq 0 ] && [ -f ~/Downloads/Wavewalletdk.aar ] &&
-   [ -f WavelengthReactNative.podspec ]; then
-  mkdir -p android/libs
-  cp ~/Downloads/Wavewalletdk.aar android/libs/
+if [ "$extracted" -eq 0 ] && [ -f WavelengthReactNative.podspec ]; then
   # Replace rather than unpacking over: tar merges into an existing directory
   # and would leave slices from an earlier revision behind.
   rm -rf ios/Wavewalletdk.xcframework

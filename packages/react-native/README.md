@@ -24,12 +24,12 @@ same typed client contract as the web transport.
 npm install @lightninglabs/wavelength-react-native @lightninglabs/wavelength-react
 ```
 
-The native wallet runtime binaries (`Wavewalletdk.aar` and
-`Wavewalletdk.xcframework`) are not bundled inside the npm package. Download
-them from the [wavelength release](https://github.com/lightninglabs/wavelength/releases)
+The Android runtime binary (`Wavewalletdk.aar`) ships inside the npm package.
+The iOS one (`Wavewalletdk.xcframework`) does not: download it from the
+[wavelength release](https://github.com/lightninglabs/wavelength/releases)
 tagged with the `RUNTIME_MANIFEST_VERSION` that
-`@lightninglabs/wavelength-core` exports, and stage them into this package
-before running `pod install` or a Gradle build.
+`@lightninglabs/wavelength-core` exports, and stage it into this package
+before running `pod install`.
 [Installation](https://wavelength.lightning.engineering/react-native/get-started/installation/)
 in the documentation walks through the exact staging steps, including the
 header rewrite the iOS framework needs.
