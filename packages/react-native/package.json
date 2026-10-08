@@ -50,5 +50,5 @@
     "@types/react": "^19.2.17",
     "react": "19.2.3"
   },
-  "files": ["dist", "src", "android", "ios", "*.podspec", "!android/libs", "!ios/Wavewalletdk.xcframework"]
+  "files": ["dist", "src", "android", "ios", "*.podspec", "!ios/Wavewalletdk.xcframework"]
 }

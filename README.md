@@ -212,11 +212,11 @@ Keep the uncompressed `wavewalletdk.wasm` beside it as the fallback.
 
 ### React Native: native binaries
 
-The native wallet runtime (`Wavewalletdk.aar` for Android,
-`Wavewalletdk.xcframework` for iOS) is staged into the installed
-`wavelength-react-native` package before the first native build. Download the
-binaries from the wavelength release, or, from a checkout of this repository,
-let the package's `bindings:fetch` script stage them for you. See
+The Android runtime (`Wavewalletdk.aar`) ships inside the published
+`wavelength-react-native` package. The iOS runtime (`Wavewalletdk.xcframework`)
+is staged into the installed package before the first iOS build. Download it
+from the wavelength release, or, from a checkout of this repository, let the
+package's `bindings:fetch` script stage it for you. See
 [Installation](https://wavelength.lightning.engineering/react-native/get-started/installation/)
 for the exact steps.
 

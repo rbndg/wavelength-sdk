@@ -62,6 +62,11 @@ jobs:
             fi
           done
       - run: pnpm build
+      # The Android binary ships inside the react-native package, so stage it
+      # from the daemon release the pin names before publishing. The fetch
+      # fails rather than publishing a package without it.
+      - name: Stage the Android binding
+        run: pnpm --filter @lightninglabs/wavelength-react-native run bindings:fetch android
       # pnpm (not npm) so the workspace:* dependency ranges are rewritten to
       # the real versions in the published tarballs, filtered to packages/* so
       # this step publishes exactly the set the version check covered. pnpm
